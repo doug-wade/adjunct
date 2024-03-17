@@ -41,8 +41,8 @@ export const useScatterData = () => {
   useEffect(() => {
     setData((prevState) => {
       const breweryPoints = Object.values(breweries).map((brewery) => ({
-        x: brewery.latitude,
-        y: brewery.longitude,
+        x: brewery.longitude,
+        y: brewery.latitude,
         label: brewery.name,
       }))
 
