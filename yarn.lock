@@ -1453,6 +1453,41 @@ __metadata:
   languageName: node
   linkType: hard
 
+"adjunct@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "adjunct@workspace:."
+  dependencies:
+    "@types/lodash.merge": "npm:^4.6.9"
+    "@types/react": "npm:^18.2.64"
+    "@types/react-dom": "npm:^18.2.21"
+    "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
+    "@typescript-eslint/parser": "npm:^7.2.0"
+    "@vitejs/plugin-react": "npm:^4.2.1"
+    autoprefixer: "npm:^10.4.18"
+    chart.js: "npm:^4.4.2"
+    classnames: "npm:^2.5.1"
+    eslint: "npm:^8.57.0"
+    eslint-plugin-react: "npm:^7.34.1"
+    eslint-plugin-react-hooks: "npm:^4.6.0"
+    eslint-plugin-react-refresh: "npm:^0.4.5"
+    immer: "npm:^10.0.4"
+    json-case-convertor-ts: "npm:^1.0.3"
+    lodash.merge: "npm:^4.6.2"
+    postcss: "npm:^8.4.35"
+    postcss-import: "npm:^16.0.1"
+    postcss-nesting: "npm:^12.1.0"
+    postcss-preset-env: "npm:^9.5.1"
+    react: "npm:^18.2.0"
+    react-chartjs-2: "npm:^5.2.0"
+    react-dom: "npm:^18.2.0"
+    react-hook-form: "npm:^7.51.0"
+    tailwindcss: "npm:^3.4.1"
+    typescript: "npm:^5.4.2"
+    vite: "npm:^5.1.6"
+    zustand: "npm:^4.5.2"
+  languageName: unknown
+  linkType: soft
+
 "agent-base@npm:^7.0.2, agent-base@npm:^7.1.0":
   version: 7.1.0
   resolution: "agent-base@npm:7.1.0"
@@ -5051,41 +5086,6 @@ __metadata:
   checksum: 10c0/6c4032340701a9950865f7ae8ef38578d8d7053f5e10518076e6554a9381fa91bd9c6850193695c141f32b21f979c985db07265a758867bac95de05f7d8aeb39
   languageName: node
   linkType: hard
-
-"tailwind-playground@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "tailwind-playground@workspace:."
-  dependencies:
-    "@types/lodash.merge": "npm:^4.6.9"
-    "@types/react": "npm:^18.2.64"
-    "@types/react-dom": "npm:^18.2.21"
-    "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
-    "@typescript-eslint/parser": "npm:^7.2.0"
-    "@vitejs/plugin-react": "npm:^4.2.1"
-    autoprefixer: "npm:^10.4.18"
-    chart.js: "npm:^4.4.2"
-    classnames: "npm:^2.5.1"
-    eslint: "npm:^8.57.0"
-    eslint-plugin-react: "npm:^7.34.1"
-    eslint-plugin-react-hooks: "npm:^4.6.0"
-    eslint-plugin-react-refresh: "npm:^0.4.5"
-    immer: "npm:^10.0.4"
-    json-case-convertor-ts: "npm:^1.0.3"
-    lodash.merge: "npm:^4.6.2"
-    postcss: "npm:^8.4.35"
-    postcss-import: "npm:^16.0.1"
-    postcss-nesting: "npm:^12.1.0"
-    postcss-preset-env: "npm:^9.5.1"
-    react: "npm:^18.2.0"
-    react-chartjs-2: "npm:^5.2.0"
-    react-dom: "npm:^18.2.0"
-    react-hook-form: "npm:^7.51.0"
-    tailwindcss: "npm:^3.4.1"
-    typescript: "npm:^5.4.2"
-    vite: "npm:^5.1.6"
-    zustand: "npm:^4.5.2"
-  languageName: unknown
-  linkType: soft
 
 "tailwindcss@npm:^3.4.1":
   version: 3.4.1
