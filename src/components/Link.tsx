@@ -1,6 +1,11 @@
-import React from "react"
+import React from 'react'
 
-const Link = ({ href, children }) => (
+interface LinkProps {
+    href: string
+    children: React.ReactNode
+}
+
+const Link = ({ href, children }: LinkProps) => (
     <a className="text-yellow-500 hover:text-yellow-800 underline" href={href}>{children}</a>
 )
 

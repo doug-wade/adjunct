@@ -4,7 +4,7 @@ import Nearby from './pages/Nearby.js'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Nearby />
-  </React.StrictMode>,
+    <React.StrictMode>
+        <Nearby />
+    </React.StrictMode>,
 )

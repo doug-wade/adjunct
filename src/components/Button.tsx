@@ -1,7 +1,12 @@
 import classnames from 'classnames'
 import React from 'react'
 
-const Button = ({ children, variant }) => {
+interface ButtonProps {
+    children: React.ReactNode
+    variant?: 'primary' | 'secondary' | 'danger'
+}
+
+const Button = ({ children, variant }: ButtonProps) => {
     const className = classnames({
         'btn-primary': variant === 'primary',
         'btn-secondary': variant === 'secondary',

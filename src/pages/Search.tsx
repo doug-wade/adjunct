@@ -1,32 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
-import BreweryList from "../components/BreweryList";
-import SearchForm from "../components/SearchForm";
-import { useBrewerySearch } from "../hooks/useBrewerySearch";
-import { useBreweryStore } from "../hooks/useBreweryStore";
-import BreweryScatterPlot from "../components/BreweryScatterPlot";
+import BreweryList from '../components/BreweryList'
+import SearchForm from '../components/SearchForm'
+import { useBrewerySearch } from '../hooks/useBrewerySearch'
+import { useBreweryStore } from '../hooks/useBreweryStore'
+import BreweryScatterPlot from '../components/BreweryScatterPlot'
+import { UseBrewerySearchParams } from '../types'
 
-function App() {
-  const [searchParams, setSearchParams] = useState(new URLSearchParams());
-  const { results } = useBrewerySearch(searchParams);
-  const { replaceBreweries, breweries } = useBreweryStore();
+function Search() {
+    const [searchParams, setSearchParams] = useState<UseBrewerySearchParams>({})
+    const { results } = useBrewerySearch(searchParams)
+    const { addBreweries, breweries } = useBreweryStore()
 
-  useEffect(() => {
-    replaceBreweries(results);
-  }, [results]);
+    useEffect(() => {
+        addBreweries(results)
+    }, [results])
 
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline">Brewery Search</h1>
-      <SearchForm onSubmit={setSearchParams} />
-
-      {!breweries && <p>Loading...</p>}
-
-      {breweries && <BreweryScatterPlot />}
-
-      {breweries && <BreweryList />}
-    </>
-  );
+    return (
+        <>
+            <h1 className="text-3xl font-bold underline">Brewery Search</h1>
+            <SearchForm onSubmit={setSearchParams} />
+            {!breweries && <p>Loading...</p>}
+            {breweries && <BreweryScatterPlot />}
+            {breweries && <BreweryList />}
+        </>
+    )
 }
 
-export default App;
+export default Search
