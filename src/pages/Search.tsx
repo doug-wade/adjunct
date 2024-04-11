@@ -9,18 +9,23 @@ import { UseBrewerySearchParams } from '../types'
 
 function Search() {
     const [searchParams, setSearchParams] = useState<UseBrewerySearchParams>({})
-    const { results } = useBrewerySearch(searchParams)
+    const [{ data, isLoading, isError }, setUrl] = useBrewerySearch()
     const { addBreweries, breweries } = useBreweryStore()
 
     useEffect(() => {
-        addBreweries(results)
-    }, [results])
+        addBreweries(data.results)
+    }, [data.results])
+
+    useEffect(() => {
+        setUrl(searchParams)
+    }, [searchParams, setUrl])
 
     return (
         <>
             <h1 className="text-3xl font-bold underline">Brewery Search</h1>
             <SearchForm onSubmit={setSearchParams} />
-            {!breweries && <p>Loading...</p>}
+            {isLoading && <p>Loading...</p>}
+            {isError && <p>Loading...</p>}
             {breweries && <BreweryScatterPlot />}
             {breweries && <BreweryList />}
         </>

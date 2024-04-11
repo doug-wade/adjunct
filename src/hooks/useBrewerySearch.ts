@@ -3,6 +3,12 @@ import { camelCaseKeys } from 'json-case-convertor-ts'
 
 import { Brewery, BreweryJson, UseBrewerySearchParams } from '../types'
 
+export type UseBrewerySearchResult = {
+    data: { results: Brewery[] };
+    isLoading: boolean;
+    isError: boolean;
+}
+
 const parseBrewery = (breweryJson: BreweryJson): Brewery => {
     const brewery = camelCaseKeys<Brewery>(breweryJson)
     brewery.latitude = parseFloat(breweryJson.latitude)
@@ -50,34 +56,43 @@ const getUrlFromParams = (jsonParams: UseBrewerySearchParams): string => {
     return `https://api.openbrewerydb.org/breweries?${stringified}`
 }
 
-const useBrewerySearch = (jsonParams: UseBrewerySearchParams) => {
-    const [results, setResults] = useState<Brewery[]>([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState<Error | null>(null)
-
+const useBrewerySearch: () => [UseBrewerySearchResult, (jsonParams: UseBrewerySearchParams) => void] = () => {
+    const [data, setData] = useState<{ results: Brewery[] }>({ results: [] })
+    const [url, setUrl] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
+    const [isError, setIsError] = useState(false)
+  
     useEffect(() => {
-        setLoading(true)
-        setError(null)
-        setResults([])
+        const fetchData = async () => {
+            if (url === '') {
+                return
+            }
 
-        const url = getUrlFromParams(jsonParams)
+            setIsError(false)
+            setIsLoading(true)
 
-        if (url === '') {
-            return
+            try {
+                const result = await fetch(url)
+                const json = await result.json()
+                const response = parseResponse(json)
+  
+                setData({ results: response })
+            } catch (error) {
+                setIsError(true)
+            }
+  
+            setIsLoading(false)
         }
+  
+        fetchData()
+    }, [url])
 
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                setResults(parseResponse(data))
-            })
-            .catch(setError)
-            .finally(() => {
-                setLoading(false)
-            })
-    }, [results, setResults, loading, setLoading, error, setError, jsonParams])
+    const setUrlFromJsonParams = (jsonParams: UseBrewerySearchParams) => {
+        const url = getUrlFromParams(jsonParams)
+        setUrl(url)
+    }
 
-    return { results, loading, error }
+    return [{ data, isLoading, isError }, setUrlFromJsonParams]
 }
 
 export { useBrewerySearch }

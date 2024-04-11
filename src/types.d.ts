@@ -30,12 +30,12 @@ export type BreweryType =
 | 'closed';
 
 export interface UseBrewerySearchParams {
-    city?: string | null
-    name?: string | null
-    state?: string | null
-    postalCode?: number | null
-    type?: BreweryType[] | null
-    location?: GeolocationPosition | null
+    city?: string | null;
+    name?: string | null;
+    state?: string | null;
+    postalCode?: number | null;
+    type?: BreweryType[] | null;
+    location?: GeolocationPosition | null;
 }
 
 type BreweryJson = {

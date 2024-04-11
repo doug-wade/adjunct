@@ -10,16 +10,23 @@ import { useBrewerySearch } from '../hooks/useBrewerySearch'
 function Nearby() {
     const location = useLocation()
     const { addBreweries, breweries } = useBreweryStore()
-    const { results } = useBrewerySearch(location)
+    const [{ data, isLoading, isError }, setUrl] = useBrewerySearch()
 
     useEffect(() => {
-        addBreweries(results)
-    }, [results])
+        addBreweries(data.results)
+    }, [data])
+
+    useEffect(() => {
+        if (location !== null) {
+            setUrl(location)
+        }
+    }, [location, setUrl])
 
     return (
         <>
             <h1 className="text-3xl font-bold underline">Nearby Breweries</h1>
-            {!breweries && <p>Loading...</p>}
+            {isLoading && <p>Loading...</p>}
+            {isError && <p>Error...</p>}
             {breweries && <BreweryScatterPlot />}
             {breweries && <BreweryList />}
         </>
